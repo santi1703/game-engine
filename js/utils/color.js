@@ -13,7 +13,7 @@ class Color {
             decimalToHex(randomWithinRange(0, 255)),
             decimalToHex(randomWithinRange(0, 255)),
             decimalToHex(randomWithinRange(0, 255)),
-            decimalToHex(randomWithinRange(30, 175))
+            decimalToHex(randomWithinRange(50, 175))
         );
     }
 

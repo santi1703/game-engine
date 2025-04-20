@@ -2,7 +2,7 @@ import Color from "./utils/color.js";
 import {randomUuid, randomWithinRange} from "./utils/number.js";
 
 class Drawable {
-    constructor(field, x, y, width, height, backgroundColor = '#FF000030', fadable = false) {
+    constructor(field, x, y, width, height, backgroundColor = '#FF000030', fadable = false, fadeTime = randomWithinRange(100, 500)) {
         this.id = randomUuid();
         this.field = field;
         this.x = x;
@@ -11,7 +11,7 @@ class Drawable {
         this.height = height;
         this.backgroundColor = backgroundColor;
         this.fadable = fadable;
-        this.fadeTime = randomWithinRange(100, 500);
+        this.fadeTime = fadeTime;
         this.startingTick = this.field.tick;
         this.slot = null;
     }
@@ -32,6 +32,10 @@ class Drawable {
         this.backgroundColor = this.startingColor.interpolateRgba(targetColor, tick, 500).getRgba();
     }
 
+    delete() {
+        this.field.removeElement(this.id, this.slot);
+    }
+
     tick() {
         this.currentTick = this.field.tick - this.startingTick;
 
@@ -44,7 +48,7 @@ class Drawable {
         }
 
         if (this.fadable && this.currentTick >= this.fadeTime) {
-            this.field.removeElement(this.id, this.slot);
+            this.delete();
         }
     }
 }

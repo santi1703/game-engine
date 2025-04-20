@@ -6,6 +6,8 @@ class Field {
     constructor() {
         this.tick = 0;
         this.margin = 10;
+        this.startingHP = 300;
+        this.currentHP = this.startingHP;
         this.startingTime = Date.now();
         this.canvas = document.getElementById("canvas");
         this.context = this.canvas.getContext("2d");
@@ -42,6 +44,10 @@ class Field {
         this.addElement(Field.ELEMENTS_UI, element);
     }
 
+    getDynamicElements() {
+        return this.elements[Field.ELEMENTS_DYNAMIC];
+    }
+
     clean() {
         this.context.fillStyle = this.backgroundColor;
         this.context.fillRect(0, 0, this.width, this.height);
@@ -65,6 +71,10 @@ class Field {
     loop() {
         setTimeout(this.loop.bind(this), this.timeoutMilliseconds);
         this.step();
+    }
+
+    damagePlayer(damage) {
+        this.currentHP -= damage;
     }
 }
 

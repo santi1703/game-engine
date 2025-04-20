@@ -1,8 +1,8 @@
 import Drawable from "../drawable.js";
 
 class UiElement extends Drawable {
-    constructor(field, x, y, width, height, backgroundColor) {
-        super(field, x, y, width, height, backgroundColor);
+    constructor(field, x, y, width, height, backgroundColor, fadable = false, fadeTime) {
+        super(field, x, y, width, height, backgroundColor, fadable, fadeTime);
         this.maxWidth = width;
         this.maxHeight = height;
         this.textColor = '#000000FF';
