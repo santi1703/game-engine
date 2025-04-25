@@ -1,7 +1,7 @@
 import UiElement from "./uiElement.js";
 import Color from "../utils/color.js";
 
-class UiTime extends UiElement {
+class UiText extends UiElement {
     constructor(field, x, y, textSize = 20, text = 'UiText', textColor = '#FFFFFFFF', strokeColor = '#000000FF', fadable = true, fadeTime = 30) {
         super(field, x, y, 0, 0, textColor, fadable, fadeTime);
         this.text = text;
@@ -49,4 +49,4 @@ class UiTime extends UiElement {
     }
 }
 
-export default UiTime;
+export default UiText;
